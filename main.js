@@ -1,2 +1,3 @@
 import 'aframe'
-import '/guiComponent'
+import '/js/components/guiControlComponent'
+import '/js/components/spawnableComponent'
