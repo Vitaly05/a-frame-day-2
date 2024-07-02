@@ -11,11 +11,15 @@
 
     <a-assets>
       <a-asset-item id="jenkins-asset" src="/assets/models/Jenkins.gltf"></a-asset-item>
+      <img id="sky-image" src="/assets/images/sky.jpg" />
     </a-assets>
 
 
     <a-plane color="lightgreen" rotation="-90 0 0" width="10" height="10" class="clickable" spawnable="modelId: jenkins-model"></a-plane>
     <a-entity gltf-model="#jenkins-asset" id="jenkins-model" visible="false"></a-entity>
+
+    <a-sky src="#sky-image" rotation="0 180 0"></a-sky>
+    <a-sphere radius="1" position="0 1 0" material="metalness: 1; roughness: 0; envMap: #sky-image;"></a-sphere>
   </a-scene>
   <script type="module" src="main.js"></script>
 </body>
