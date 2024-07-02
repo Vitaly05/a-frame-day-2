@@ -3,6 +3,7 @@ import '/js/components/guiControlComponent'
 import '/js/components/spawnableComponent'
 import '/js/components/musicComponent'
 import '/js/components/mouseRotateYComponent'
+import '/js/components/levitationComponent'
 
 const startScreen = document.getElementById('js-start-screen')
 const playButton = document.getElementById('js-play-button')
