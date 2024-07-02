@@ -36,10 +36,8 @@ AFRAME.registerComponent('gui-control', {
   },
   remove: function () {
     const options = guiOptions[`task${this.data.taskNumber}`]
-    console.log(options.elements)
     const index = options.elements.findIndex((el) => el === this.el)
     options.elements.splice(index, 1)
-    console.log(options.elements)
   },
 })
 
