@@ -1,1 +1,2 @@
 import 'aframe'
+import '/guiComponent'
