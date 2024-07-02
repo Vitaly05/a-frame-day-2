@@ -8,6 +8,7 @@ AFRAME.registerComponent('spawnable', {
     this.targetPosition = new THREE.Vector3()
     this.startPosition = new THREE.Vector3()
     this.isMoving = false
+    this.elapsedTime = 0
   },
   events: {
     click: function (e) {
@@ -17,7 +18,7 @@ AFRAME.registerComponent('spawnable', {
         this.targetPosition.copy(intersection.point)
         this.startPosition.copy(this.modelEl.object3D.position)
         this.isMoving = true
-        this.startTime = null
+        this.elapsedTime = 0
       }
     },
   },
@@ -25,10 +26,8 @@ AFRAME.registerComponent('spawnable', {
     if (!this.isMoving) {
       return
     }
-    if (!this.startTime) {
-      this.startTime = time
-    }
-    const progress = (time - this.startTime) / this.data.duration
+    this.elapsedTime += timeDelta
+    const progress = this.elapsedTime / this.data.duration
 
     this.modelEl.object3D.position.lerpVectors(
       this.startPosition,
@@ -38,7 +37,6 @@ AFRAME.registerComponent('spawnable', {
 
     if (progress >= 1) {
       this.isMoving = false
-      this.modelEl.setAttribute('visible', true)
     }
   },
   remove: function () {},
