@@ -14,6 +14,7 @@
 
   <a-scene>
     <a-camera raycaster="objects: .clickable" cursor="fuse: false; rayOrigin: mouse;" id="js-main-camera"></a-camera>
+    <a-entity light="color: #ffffff; intensity: 1.5; castShadow: true" position="100 100 100"></a-entity>
 
     <a-assets>
       <a-asset-item id="jenkins-asset" src="/assets/models/Jenkins.gltf"></a-asset-item>
@@ -23,8 +24,8 @@
 
     <a-entity music="src: /assets/sounds/Animenz Nier Automata OST.mp3"></a-entity>
 
-    <a-plane color="lightgreen" rotation="-90 0 0" width="10" height="10" class="clickable" spawnable="modelId: jenkins-model" gui-control="taskNumber: 4"></a-plane>
-    <a-entity gltf-model="#jenkins-asset" id="jenkins-model" visible="false" gui-control="taskNumber: 4"></a-entity>
+    <a-plane shadow="receive: true" material="shader: shadow" rotation="-90 0 0" width="10" height="10" class="clickable" spawnable="modelId: jenkins-model" gui-control="taskNumber: 4"></a-plane>
+    <a-entity gltf-model="#jenkins-asset" shadow="cast: true; receive: false" id="jenkins-model" visible="false" gui-control="taskNumber: 4"></a-entity>
 
     <a-sky src="#sky-image" rotation="0 180 0" gui-control="taskNumber: 5"></a-sky>
     <a-sphere radius="1" position="0 1 0" material="metalness: 1; roughness: 0; envMap: #sky-image;" gui-control="taskNumber: 6"></a-sphere>
