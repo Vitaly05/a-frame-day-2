@@ -18,6 +18,9 @@ AFRAME.registerComponent('mouse-rotate-y', {
       this.isRotating = false
     },
   },
+  remove: function () {
+    document.removeEventListener('mousemove', this.rotateObject)
+  },
 })
 
 function rotateObject(e) {

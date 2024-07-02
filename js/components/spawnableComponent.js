@@ -15,4 +15,5 @@ AFRAME.registerComponent('spawnable', {
       }
     },
   },
+  remove: function () {},
 })

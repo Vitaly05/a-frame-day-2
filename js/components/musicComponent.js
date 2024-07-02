@@ -3,16 +3,27 @@ AFRAME.registerComponent('music', {
     src: { type: 'string' },
   },
   init: function () {
-    const audio = document.createElement('audio')
+    this.playMusic = playMusic.bind(this)
+    this.audio = document.createElement('audio')
 
-    audio.src = this.data.src
-    audio.setAttribute('visible', false)
-    audio.setAttribute('autoplay', true)
-    audio.setAttribute('loop', true)
+    this.audio.src = this.data.src
+    this.audio.setAttribute('visible', false)
+    this.audio.setAttribute('autoplay', true)
+    this.audio.setAttribute('loop', true)
 
-    document.body.appendChild(audio)
-    document.getElementById('js-play-button').addEventListener('click', () => {
-      audio.play()
-    })
+    document.body.appendChild(this.audio)
+    document
+      .getElementById('js-play-button')
+      .addEventListener('click', this.playMusic)
+  },
+  remove: function () {
+    document.body.removeChild(this.audio)
+    document
+      .getElementById('js-play-button')
+      .removeEventListener('click', this.playMusic)
   },
 })
+
+function playMusic() {
+  this.audio.play()
+}
